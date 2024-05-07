@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  springboot-app:
+    container_name: lms-spring-app
+    image: springbooot-app
+    restart: always
+    build: /Spring
+    ports:
+      - 9090:8080
+    environment:
+      MYSQL_HOST: lms-mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+  mysqldb:
+    container_name: lms-mysqldb
+    image: mysql:8.0.36
+    volumes:
+          - D:\MY PROJECT\SW2 project\Versionns of projects\New folder\Database:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: resto
+      MYSQL_ROOT_PASSWORD: root
+
+  # react:
+  #   build: ./Restoo/src
+  #   container_name: lms-react-container
+  #   stdin_open: true
+  #   ports:
+  #     - 5173:5173
